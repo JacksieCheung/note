@@ -1,5 +1,16 @@
 ## github团队开发中常用命令
 
+git
+
+分支示意图：
+
+```
+master 1-2-3 ...... 7
+           |       /
+           |      /                                                                       
+test_dev   4-5-6-7
+```
+
 ### 1. 新建分支
 
 `git branch [branch name]`
@@ -78,4 +89,4 @@ github 的 commit 应该包含四个部分： type scope subject body
 
 `git pull`
 
->更多相关，请看 `git --help`
+>更多相关，请看 `git <verb> --help 或 git help <verb>`
