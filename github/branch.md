@@ -66,7 +66,9 @@ github 的 commit 应该包含四个部分： type scope subject body
 
 ### 7. 回到以前版本
 
-`git checkout 1fbcb7ea3b43df60c639875d2bb68e20b451059e`
+`git checkout [version_hash]`
+
+版本哈希值通过 `git log` 查看。
 
 ### 8. 提pr
 
