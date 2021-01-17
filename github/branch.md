@@ -74,4 +74,8 @@ github 的 commit 应该包含四个部分： type scope subject body
 
 这个通过网页版实现，提pr的标题要说明进行了哪些修改。
 
+### 9. 拉取上游分支最新修改并合并
+
+`git pull`
+
 >更多相关，请看 `git --help`
