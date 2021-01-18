@@ -16,7 +16,7 @@ git 中拉分支这个动作，实际上是从远程仓库中的某个版本拉�
 
 上述过程就提及了 git 分支的工作流程： 拉分支--本地开发--推分支--合并分支
 
-其中推分支，意思就是我们每次 `git push` 时，不再用 `git push origin master` 而改为 `git push origin test_dev`。我们不再推主分支，而是推到自己的分支上。当我们要合并分支时，一般是通过 github 网页提 pr（pull reqest） 的方式来完成。
+其中推分支，意思就是我们每次 `git push` 时，不再用 `git push origin master` 而改为 `git push origin test_dev`。我们不再推主分支，而是推到自己的分支上。当我们要合并分支时，可以通过 github 网页提 pr（pull reqest） 的方式来完成。
 
 分支的命名一般是 `对应服务名字_dev` 的格式， dev 的意思就是 develop 开发的意思。
 
