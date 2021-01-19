@@ -120,7 +120,7 @@ git 的标签分为两种：轻量标签的和附注标签
 
 `git tag v1.4` 没有任何选项，就是轻量标签。
 
-`git tag -a v1.2 <hash>` 可以对过去版本打标签，`<hash> 为版本hash值，通过`git log`查看。
+`git tag -a v1.2 <hash>` 可以对过去版本打标签，`<hash>` 为版本hash值，通过`git log`查看。
 
 `git push origin v1.5` 向远程仓库推特定标签。标签不会自动推，必须手动。
 
