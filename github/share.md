@@ -24,7 +24,7 @@ git是一个版本控制系统。
 
 第一种开发的版本控制系统，叫做**本地版本控制系统**。它的原理是用简单的数据库来记录文件的历次更新差异。其中最流行的叫做RCS，它在硬盘上保存补丁集，通过应用所有补丁集，可以重新计算出各个版本的文件内容。
 
-![图片](https://git-scm.com/book/en/v2/images/local.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/1.png)
 
 >补丁的意思就是文件修改前后的变化，RCS记录的是文件之间的变化，也就是类似某一行删了，某一行改了，某一行加了这种变化。
 
@@ -32,7 +32,7 @@ git是一个版本控制系统。
 
 第二种开发的版本控制系统，叫做**集中化的版本控制系统**。这个版本控制系统有一个单一的集中管理服务器保存所有文件的修订版本。各用户只需要通过客户端连接到这台服务器，就能够取出最新的文件或者提交更新。
 
-![图片](https://git-scm.com/book/en/v2/images/centralized.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/2.png)
 
 上面是模型图。和本地版本控制系统的区别就是本地不再存储文件版本，而改为只有远程一个存储文件的服务器。不难理解集中化，指的就是多用户的版本集中化管理。本地的客户端，只是一个提交本地文件快照的工具。
 
@@ -44,7 +44,7 @@ git是一个版本控制系统。
 
 分布式版本控制系统，实际上就是前两种的结合体。它在集中化版本控制系统的基础上，给本地客户端加了本地数据库。也就是本地的客户端把远程仓库完整的拉下来，包括历史记录。这样无论服务器怎么故障，本地都可以提交代码，之后只需要在故障后同步远程服务器就可以了。
 
-![图片](https://git-scm.com/book/en/v2/images/distributed.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/3.png)
 
 **而 git 就是这样一个分布式版本控制系统。**
 
@@ -120,7 +120,7 @@ linux内核开源项目有着为数众多的参与者。1991-2002年间，绝大
 
 之后通过`git commit`指令就可以向本地仓库提交代码了，两种文件状态都会从已暂存变为已提交/未修改。
 
-![图片](https://git-scm.com/book/en/v2/images/lifecycle.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/4.png)
 
 以上就是git本地工作流程。而我们常用的`git push`实际就是和远程仓库同步数据而已。
 
@@ -152,11 +152,11 @@ git的分支是特例，实际使用过git的分支后，我们会感觉到建�
 
 下面这张图，左边是提交对象，中间是树对象，右边是文件快照。
 
-![图片](https://git-scm.com/book/en/v2/images/commit-and-tree.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/5.png)
 
 上图是一个提交对象的结构，提交对象在整个分支中通过指针相连（注意是只有父指针）。最后形成的结构，和单链表竟是如此神似！
 
-![图片](https://git-scm.com/book/en/v2/images/commits-and-parents.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/6.png)
 
 ### 3.2 git分支的秘密
 
@@ -170,7 +170,7 @@ git分支为何能建得如此之快，那是因为git没有创建源文件的�
 
 实际上也很简单，它有一个名为HEAD的特殊指针，这个指针指在的提交对象，就是当前所在的本地分支。
 
-![图片](https://git-scm.com/book/en/v2/images/head-to-master.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/7.png)
 
 如图，testing是建立新分支时建立的指针，指向末尾节点。HEAD指针指在master上，所以当前就在master分支上。
 
@@ -178,7 +178,7 @@ git分支为何能建得如此之快，那是因为git没有创建源文件的�
 
 这种情况，testing指针会向前移动，但master指针没有，于是便和master分支发生了分离。如图：
 
-![图片](https://git-scm.com/book/en/v2/images/advance-testing.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/8.png)
 
 现在如果我们切换回master分支，会发生两件事情：HEAD指针指回了master分支，并且工作目录恢复成了master分支所指向的快照内容。也就是说整个项目回到了旧的版本，忽略了testing分支所做的改变。
 
@@ -188,7 +188,7 @@ git分支为何能建得如此之快，那是因为git没有创建源文件的�
 
 上面说到当前分支切换回了master，那么更进一步。如果当前在master进行了提交，会发生什么？
 
-![图片](https://git-scm.com/book/en/v2/images/advance-master.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/9.png)
 
 可见，这样一来master分支就和testing分支产生了分离，他们走向了不同的修改方向。
 
@@ -202,7 +202,7 @@ git分支为何能建得如此之快，那是因为git没有创建源文件的�
 
 现在分支的状态如图：
 
-![图片](https://git-scm.com/book/en/v2/images/basic-branching-4.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/10.png)
 
 当bug修完，便可以切回master分支，执行指令`git merge hotfix`。
 
@@ -212,11 +212,11 @@ git分支为何能建得如此之快，那是因为git没有创建源文件的�
 
 要合并master和iss53：
 
-![图片](https://git-scm.com/book/en/v2/images/basic-merging-1.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/11.png)
 
 这个时候执行`git merge iss53`，git会找到master和iss53的最近共同祖先，这里是c2，然后进行c2、master、iss53的三方合并，最后得到一个新的提交对象。
 
-![图片](https://git-scm.com/book/en/v2/images/basic-merging-2.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/12.png)
 
 **冲突**
 
@@ -238,7 +238,7 @@ git分支为何能建得如此之快，那是因为git没有创建源文件的�
 
 远程分支以 `<remote>/<origin>`的形式来命名。像我们的远程master分支，就是`origin/master`。其中origin是默认名，并无实际意义。
 
-![图片](https://git-scm.com/book/en/v2/images/remote-branches-1.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/13.png)
 
 这是一个从远程仓库`git clone`的示意图，本地回拉生成一个本地的master分支，同时也会生成一个origin/master的远程跟踪分支。
 
@@ -256,7 +256,7 @@ git分支为何能建得如此之快，那是因为git没有创建源文件的�
 
 fetch指令用于拉取远程仓库有的，而本地没有的数据。这意味着，远程的分支也会被拉下来！
 
-![图片](https://git-scm.com/book/en/v2/images/remote-branches-3.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/14.png)
 
 如图是一个fetch的流程，本地master进行了提交，远程服务器的master也进行了提交。最后fetch的结果就是origin/master和master产生了分离。这个时候我们可以切换在master上merge一下合并远程分支。
 
@@ -290,13 +290,13 @@ rebase和merge没有功能上的区别。唯一的区别就是rebase和merge的�
 
 事实上rebase是通过找到两个分支（基底分支和待合并分支）的共同祖先，然后对比待合并分支和祖先的历次提交，提取相应的修改并存为临时文件，然后将HEAD指针指向基底分支，将之前的临时文件修改依次序应用。就像是在基底分支上修改操作进行回放。
 
-![图片](https://git-scm.com/book/en/v2/images/basic-rebase-3.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/15.png)
 
 如图，c4的操作在c3这个基底上回放，得到了c4‘这个新的节点。
 
 此后我们可以回到master分支，执行merge，master就只是简单地进行了快进。
 
-![图片](https://git-scm.com/book/en/v2/images/basic-rebase-4.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/16.png)
 
 我们使用rebase，一般是为了使提交记录更整洁。但有一个原则，别人如果在我们的分支基础上拉了分支，那么我们这个分支合并时不能用rebase。
 
@@ -312,7 +312,7 @@ rebase和merge没有功能上的区别。唯一的区别就是rebase和merge的�
 
 长期分支的master和其他开发分支之间的提交记录往往是相差甚远的。
 
-![图片](https://git-scm.com/book/en/v2/images/lr-branches-2.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/17.png)
 
 长期分支可以维护不同层次的稳定性。适合用于大型项目，许多公司也沿用了这样的一个工作流。
 
@@ -320,6 +320,6 @@ rebase和merge没有功能上的区别。唯一的区别就是rebase和merge的�
 
 主题分支对任何规模的项目都适用。主题分支是一种短期的分支，被用来实现单一特性或其他相关工作。
 
-![图片](https://git-scm.com/book/en/v2/images/topic-branches-1.png)
+![图片](https://cdn.jsdelivr.net/gh/JacksieCheung/CDN/github/18.png)
 
 简单来说，就是一个项目分了不同服务来写。彼此之间不用互相影响，也不用考虑某一个服务的进度问题。最后只要把分支合并就可以了。我们团队现在就用这种工作流。
