@@ -23,7 +23,7 @@
 
 * 在 vscode 用快捷键 ctrl+shift+p(ubuntu)/command+shift+p(mac) 键入 go:install/update tools
 
-* 全部选项勾选，安装
+* 全部选项勾选，安装(虽然全部装了，但有些插件挺难受的)
 
 * 首选项，设置，输入go 配置 setting.json，如图：
 
@@ -31,15 +31,39 @@
   {
     "go.formatTool": "goimports",
     "go.inferGopath": false,
-    "go.lintOnSave": "file",
-    "go.autocompleteUnimportedPackages": true,
-    "go.gocodePackageLookupMode": "go",
-    "go.gotoSymbol.includeImports": true,
-    "go.useCodeSnippetsOnFunctionSuggest": true,
-    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-    "go.docsTool": "gogetdoc",
+    "go.lintOnSave": "file"
   }
   ```
+
+**下面我会根据我个人的使用习惯调整插件：**
+
+* 打开设置搜索 go
+
+* Docs Tool 选择 godoc。
+
+* Format Tool 选择 goimports 这个上面也设置了。
+
+  选择 goimports 需要额外安装插件
+
+  ```shell
+  export GO111MODULE=on
+  go get -v golang.org/x/tools/cmd/goimports
+  ```
+
+* Lint On Save 选择 file
+
+* Lint Tool 选择 golint（别选 static-check，傻逼玩意，识别不了导入的变量）
+
+  如果选择 golint，需要下载 golint
+
+  ```shell
+  export GO111MODULE=on
+  go get -v golang.org/x/lint/golint
+  ```
+
+* Use Language Server 取消勾选
+
+  这个条条框框太多了，看着烦，不建议使用
 
 ### 2. 生产力插件
 
@@ -100,18 +124,36 @@
   "go.formatTool": "goimports",
   "go.inferGopath": false,
   "go.lintOnSave": "file",
+  "go.goroot": "/usr/local/go",
+  "go.gopath": "/Users/jacksie/go",
   "vim.useSystemClipboard": true,
-  "go.autocompleteUnimportedPackages": true,
-  "go.gocodePackageLookupMode": "go",
-  "go.gotoSymbol.includeImports": true,
-  "go.useCodeSnippetsOnFunctionSuggest": true,
-  "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-  "go.docsTool": "gogetdoc",
   "terminal.integrated.rendererType": "dom",
-  "vscode_vibrancy.opacity": -0.5,
+  "vscode_vibrancy.opacity": -1,
   "todo-tree.tree.showScanModeButton": false,
   "editor.fontSize": 16,
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "java.semanticHighlighting.enabled": true,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home",
+  "java.requirements.JDK11Warning": false,
+  "python.pythonPath": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8",
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "python.languageServer": "Microsoft",
+  "editor.formatOnSave": true,
+  "go.lintTool": "golint",
+  "go.useLanguageServer": false
 }
 ```
 
