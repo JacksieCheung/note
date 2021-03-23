@@ -1,6 +1,6 @@
 #note
 
-# github
+# git
 
 # mysql:
 
