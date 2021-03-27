@@ -12,6 +12,10 @@
 
 查找对应包：https://pkg.go.dev/
 
+Go 语言设计与实现:https://draveness.me/golang/
+
+Go 博客: https://draveness.me/
+
 # kafka
 
 安装教程，非官网：https://blog.csdn.net/tflasd1157/article/details/81985722
@@ -30,3 +34,4 @@ http://doc.redisfans.com/
 
 * https://github.com/computer-networks/f20-p3-starter-code
 
+* https://orzbox.github.io/our-tech/#/articles/csapp-reference
