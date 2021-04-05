@@ -2,6 +2,8 @@
 
 # github
 
+* blame
+
 # mysql:
 
 1.对平时建表的一些指导

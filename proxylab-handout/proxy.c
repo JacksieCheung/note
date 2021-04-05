@@ -1,17 +1,11 @@
 #include "csapp.h"
-#include "sbuf.h"
 
 /* Recommended max cache and object sizes */
 #define MAX_CACHE_SIZE 1049000
 #define MAX_OBJECT_SIZE 102400
-#define SBUFSIZE 16
-#define NTHREADS 8
 
 /* You won't lose style points for including this long line in your code */
 static const char *user_agent_hdr = "Mozilla/5.0 (X11; Linux x86_64; rv:10.0.3) Gecko/20120305 Firefox/10.0.3";
-
-/* share connected description */
-sbuf_t sbuf;
 
 /* func */
 void *thread(void *vargp);
@@ -32,12 +26,10 @@ void clienterror(int fd, char *cause, char *errnum,
 // 5. 其他 header 直接加上
 // 6. response 直接给客户端
 
-// 第二部分，实现并发，用预线程化
+// 第二部分，实现并发
 int main(int argc, char **argv)
 {
-    printf("main\n");
-    fflush(stdin);
-    int listenfd, connfd;
+    int listenfd, *connfd;
     char hostname[MAXLINE], port[10];
     socklen_t clientlen;
     struct sockaddr_storage clientaddr;
@@ -50,44 +42,30 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    printf("hello!\n");
-
-    /* Init sbuf and create worker thread */
-    sbuf_init(&sbuf, SBUFSIZE);
-    printf("!\n");
-    for (int i = 0; i < NTHREADS; i++)
-    {
-        printf("thread:for\n");
-        Pthread_create(&tid, NULL, thread, NULL);
-    }
-    printf("?\n");
-
     listenfd = Open_listenfd(argv[1]);
-    printf("start listen\n");
+    printf("Proxy start listen on port:%s\n", argv[1]);
     while (1)
     {
         clientlen = sizeof(clientaddr);
-        connfd = Accept(listenfd, (SA *)&clientaddr, &clientlen); //line:netp:tiny:accept
+        connfd = Malloc(sizeof(int));
+        *connfd = Accept(listenfd, (SA *)&clientaddr, &clientlen); //line:netp:tiny:accept
         Getnameinfo((SA *)&clientaddr, clientlen, hostname, MAXLINE,
                     port, MAXLINE, 0);
         printf("Accepted connection from (%s, %s)\n", hostname, port);
 
-        /* Put connfd into connected description pool */
-        sbuf_insert(&sbuf, connfd);
+        /* start a thread */
+        Pthread_create(&tid, NULL, thread, connfd);
     }
 }
 
 void *thread(void *vargp)
 {
+    int connfd = *((int *)vargp);
     Pthread_detach(Pthread_self());
-    while (1)
-    {
-        int connfd = sbuf_remove(&sbuf);
-        doit(connfd); //line:netp:tiny:doit
-        // sleep(60);
-        printf("hello\n");
-        Close(connfd); //line:netp:tiny:close
-    }
+    Free(vargp);
+    doit(connfd);  //line:netp:tiny:doit
+    Close(connfd); //line:netp:tiny:close
+    return NULL;
 }
 
 void doit(int fd)
@@ -151,6 +129,8 @@ void doit(int fd)
     request[len] = '\r'; // 最后加上 "\r\n" 标志结束
     request[len + 1] = '\n';
     request[len + 2] = '\0';
+
+    printf("request struct: %s\n", request);
 
     // 发送请求 & 接收响应给客户端
     Rio_writen(clientfd, request, strlen(request));
