@@ -10,6 +10,8 @@
 
 2.对特殊情况建表或查询的指导
 
+3.事务
+
 # go
 
 编译其他环境 GOOS=linux GOARCH=amd64 go build -v main.go
