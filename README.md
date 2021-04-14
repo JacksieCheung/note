@@ -34,7 +34,9 @@ Go 博客: https://draveness.me/
 
 http://doc.redisfans.com/
 
-# csapp lab
+# csapp
+
+## csapp lab 参考网址
 
 * https://computer-networks.github.io/fa20/assignments.html 总的导航
 
@@ -43,3 +45,9 @@ http://doc.redisfans.com/
 * https://github.com/computer-networks/f20-p3-starter-code
 
 * https://orzbox.github.io/our-tech/#/articles/csapp-reference
+
+## csapp lab 完成情况
+
+* proxy lab 完成 p1 p2
+
+* shell lab 正在写
