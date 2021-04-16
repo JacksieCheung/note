@@ -51,3 +51,8 @@ http://doc.redisfans.com/
 * proxy lab 完成 p1 p2
 
 * shell lab 正在写
+
+# python pygame
+
+# ue4
+
