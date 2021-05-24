@@ -18,7 +18,7 @@
   export GO111MODULE=on
   ```
 
-  然后运行 go get 就可以了
+  然后运行 go get 就可以了(代理记得设置成 https://goproxy.cn,direct)
 
   ```shell
   go get -v github.com/micro/protobuf/{proto,protoc-gen-go}
